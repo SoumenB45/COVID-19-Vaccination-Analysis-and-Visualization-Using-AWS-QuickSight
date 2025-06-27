@@ -1,0 +1,36 @@
+Visual Type
+Total Registrations by Gender (Bar Chart)
+
+Custom SQL 1
+SELECT 'Female' AS gender, registration_female::numeric AS count FROM registration_table
+UNION ALL
+SELECT 'Male', registration_male::numeric FROM registration_table
+UNION ALL
+SELECT 'Others', registration_others::numeric FROM registration_table;
+
+X-axis: gender
+Value: count
+Group/Color: (optional)
+
+Registrations Over Time (Line Chart)
+Track daily registration trends.
+Use the original dataset (with formatted_date and registration_today)
+
+Visual Type: Line Chart
+X-axis: formatted_date
+Y-axis: registration_today
+
+Optional: Add a filter to select date range
+
+
+Online vs On-Spot Registrations (Pie or Donut Chart)
+Understand the mode preference.
+
+Create a new dataset using Custom SQL:
+SELECT 'Online' AS mode, registration_online::numeric AS count FROM registration_table
+UNION ALL
+SELECT 'On-Spot', registration_onspot::numeric FROM registration_table;
+
+Visual Type: Donut Chart
+Group/Color: mode
+Value: count

@@ -1,0 +1,31 @@
+CREATE TABLE Employees(
+    Id varchar(255),
+    Name varchar(255),
+    City varchar(255),
+	Email varchar(255),
+    Designation varchar(255),
+	PhoneNumber varchar(255)
+);
+
+====== Create Item =================================
+{
+  "ID": {
+    "S": "1"
+  },
+  "Name": {
+    "S": "Smith"
+  },
+  "City": {
+    "S": "NewYork"
+  },
+  "Email": {
+    "S": "xyz2dffd@gmail.com"
+  },
+  "Designation": {
+    "S": "Sr.Dev"
+  },
+  "PhoneNumber": {
+    "S": "2124141241"
+  }
+}
+==================================================

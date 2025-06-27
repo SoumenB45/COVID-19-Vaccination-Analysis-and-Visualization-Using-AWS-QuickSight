@@ -1,0 +1,20 @@
+from pyspark.sql.functions import col, count, when, lit
+
+# Step 3.5: Dynamically identify columns with NULLs
+null_counts = df_transformed.select([
+    count(when(col(c).isNull(), c)).alias(c) for c in df_transformed.columns
+]).collect()[0].asDict()
+
+# Build a dictionary only for columns that have NULLs
+fill_dict = {}
+for col_name, null_count in null_counts.items():
+    if null_count > 0:
+        # Assign a default fill value depending on column type or name pattern
+        if "date" in col_name:
+            fill_dict[col_name] = "01/06/2021"
+        else:
+            fill_dict[col_name] = "0"  # Since your data is mostly numeric strings
+
+# Only fill those columns that actually have NULLs
+df_clean = df_transformed.fillna(fill_dict)
+
